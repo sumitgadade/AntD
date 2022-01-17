@@ -1,9 +1,9 @@
 import { Table, DatePicker } from "antd";
 import React from "react";
 import "antd/dist/antd.css";
-import "../App.css";
 import DropDown from "./DropDown";
 import moment from "moment";
+import "../App.css";
 
 function TableComponent() {
   const dateFormat = "MM/DD/YYYY";
@@ -208,38 +208,50 @@ function TableComponent() {
 
   data.map((d) => {
     let date = moment(new Date(d.subscription_expiration));
-    d.printableDate = date.format("MM/DD/YYYY");
+    d.printableDate = date.format("MMM DD,YYYY");
   });
 
   const columns = [
     {
-      title: "buyer_name",
+      title: "Name",
       dataIndex: "buyer_name",
+      ellipsis: true,
     },
     {
-      title: "project_sector_name",
+      title: "Sector",
       dataIndex: "project_sector_name",
+      ellipsis: true,
     },
     {
-      title: "country_name",
+      title: "Country",
       dataIndex: "country_name",
+      ellipsis: true,
     },
     {
-      title: "Subscription_expiration",
+      title: "Expiry Date",
       dataIndex: "printableDate",
+      ellipsis: true,
     },
     {
-      title: "Option",
+      title: "Action",
       dataIndex: "",
+      width: 80,
       render: () => {
         return <DropDown />;
       },
+      ellipsis: true,
     },
   ];
 
   return (
     <div className="tableDiv">
-      <Table columns={columns} dataSource={data} pagination={false} />
+      <Table
+        title={() => "Data Display"}
+        columns={columns}
+        bordered
+        dataSource={data}
+        pagination={false}
+      />
     </div>
   );
 }
