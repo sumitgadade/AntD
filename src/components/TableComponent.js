@@ -77,6 +77,15 @@ function TableComponent() {
           className="site-layout-content"
           style={{ padding: 24, minHeight: 470 }}
         >
+          <div className="searchDiv">
+            <Title level={4}>
+              Search :
+              <Input
+                placeholder="input serch text"
+                style={{ width: 250, margin: 20 }}
+              />
+            </Title>
+          </div>
           <Table
             title={() => "Data Display"}
             columns={columns}
