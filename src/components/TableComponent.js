@@ -1,4 +1,4 @@
-import { Table } from "antd";
+import { Input, Table, Typography } from "antd";
 import React, { useState, useEffect } from "react";
 import "antd/dist/antd.css";
 import DropDown from "./DropDown";
@@ -6,6 +6,8 @@ import moment from "moment";
 import DataService from "../service/DataService";
 import Layout, { Content, Footer, Header } from "antd/lib/layout/layout";
 import "../App.css";
+
+const { Title } = Typography;
 
 function TableComponent() {
   const [data, setData] = useState([]);
@@ -83,7 +85,7 @@ function TableComponent() {
             pagination={false}
             onRow={(r) => ({
               onClick: () => {
-                window.open(`/data/view/${r.id}`);
+                window.open(`/data/view/${r.id}`, "_parent");
               },
             })}
           />
