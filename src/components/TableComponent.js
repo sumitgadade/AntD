@@ -4,8 +4,8 @@ import "antd/dist/antd.css";
 import DropDown from "./DropDown";
 import moment from "moment";
 import DataService from "../service/DataService";
+import Layout, { Content, Footer, Header } from "antd/lib/layout/layout";
 import "../App.css";
-import { Link } from "react-router-dom";
 
 function TableComponent() {
   const [data, setData] = useState([]);
@@ -63,20 +63,36 @@ function TableComponent() {
   ];
 
   return (
-    <div className="tableDiv">
-      <Table
-        title={() => "Data Display"}
-        columns={columns}
-        bordered
-        dataSource={data}
-        pagination={false}
-        onRow={(r) => ({
-          onClick: () => {
-            window.open(`/data/view/${r.id}`);
-          },
-        })}
-      />
-    </div>
+    <Layout>
+      <Header>
+        <div className="logo" />
+      </Header>
+      <Content
+        className="site-layout"
+        style={{ padding: "0 50px", marginTop: 64 }}
+      >
+        <div
+          className="site-layout-content"
+          style={{ padding: 24, minHeight: 470 }}
+        >
+          <Table
+            title={() => "Data Display"}
+            columns={columns}
+            bordered
+            dataSource={data}
+            pagination={false}
+            onRow={(r) => ({
+              onClick: () => {
+                window.open(`/data/view/${r.id}`);
+              },
+            })}
+          />
+        </div>
+      </Content>
+      <Footer style={{ textAlign: "center" }}>
+        Ant Design ©2022 Created by Sumit Gadade
+      </Footer>
+    </Layout>
   );
 }
 
