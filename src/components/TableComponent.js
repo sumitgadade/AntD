@@ -36,7 +36,7 @@ function TableComponent() {
     clearTimeout(timer);
     const newTimer = setTimeout(() => {
       searchFunction(e.target.value);
-    }, 2000);
+    }, 1000);
     setTimer(newTimer);
   };
 
