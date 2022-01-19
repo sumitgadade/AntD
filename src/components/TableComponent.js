@@ -12,7 +12,6 @@ const { Title } = Typography;
 function TableComponent() {
   const [originalData, setOriginalData] = useState([]);
   const [data, setData] = useState([]);
-  const [timer, setTimer] = useState(null);
   const [showTable, setShowTable] = useState(true);
   const [notFound, setNotfound] = useState(false);
 
@@ -33,18 +32,10 @@ function TableComponent() {
   };
 
   const handleSearch = (e) => {
-    clearTimeout(timer);
-    const newTimer = setTimeout(() => {
-      searchFunction(e.target.value);
-    }, 1000);
-    setTimer(newTimer);
-  };
-
-  const searchFunction = (val) => {
-    if (val !== "") {
-      console.log(val);
+    if (e.target.value !== "") {
+      console.log(e.target.value);
       const filterData = originalData.filter((entry) =>
-        entry.buyer_name.toLowerCase().includes(val.toLowerCase())
+        entry.buyer_name.toLowerCase().includes(e.target.value.toLowerCase())
       );
       if (!filterData.length) {
         setShowTable(false);
@@ -116,7 +107,7 @@ function TableComponent() {
               <Input
                 placeholder="input serch text"
                 style={{ width: 250, margin: 20 }}
-                onChange={handleSearch}
+                onBlur={handleSearch}
               />
             </Title>
           </div>
