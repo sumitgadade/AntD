@@ -43,6 +43,8 @@ function TableComponent() {
         setData([]);
       } else {
         setData(filterData);
+        setShowTable(true);
+        setNotfound(false);
       }
     } else {
       setShowTable(true);
