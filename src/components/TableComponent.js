@@ -63,21 +63,33 @@ function TableComponent() {
       title: "Name",
       dataIndex: "buyer_name",
       ellipsis: true,
+      sorter: (record1, record2) => {
+        return record1.buyer_name.localeCompare(record2.buyer_name);
+      },
     },
     {
       title: "Sector",
       dataIndex: "project_sector_name",
       ellipsis: true,
+      sorter: (record1, record2) => {
+        return record1.project_sector_name.localeCompare(record2.project_sector_name);
+      },
     },
     {
       title: "Country",
       dataIndex: "country_name",
       ellipsis: true,
+      sorter: (record1, record2) => {
+        return record1.country_name.localeCompare(record2.country_name);
+      },
     },
     {
       title: "Expiry Date",
       dataIndex: "printableDate",
       ellipsis: true,
+      sorter: (record1, record2) => {
+        return record1.printableDate.localeCompare(record2.printableDate);
+      },
     },
     {
       title: "Action",
