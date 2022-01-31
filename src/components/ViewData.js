@@ -6,6 +6,7 @@ import Layout, { Content, Footer, Header } from "antd/lib/layout/layout";
 import "../App.css";
 
 function ViewData() {
+  
   const { id } = useParams();
 
   const [name, setName] = useState("");

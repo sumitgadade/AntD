@@ -10,6 +10,7 @@ import "../App.css";
 const { Title } = Typography;
 
 function TableComponent() {
+  
   const [originalData, setOriginalData] = useState([]);
   const [data, setData] = useState([]);
 
