@@ -12,8 +12,9 @@ const { Title } = Typography;
 function TableComponent() {
   const [originalData, setOriginalData] = useState([]);
   const [data, setData] = useState([]);
-  const [showTable, setShowTable] = useState(true);
-  const [notFound, setNotfound] = useState(false);
+
+  var showTable = true;
+  var notFound = false;
 
   useEffect(() => {
     getData();
@@ -24,31 +25,27 @@ function TableComponent() {
       .then((response) => {
         setOriginalData(response.data.results);
         setData(response.data.results);
-        console.log(response.data.results);
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((error) => {});
   };
 
   const handleSearch = (e) => {
     if (e.target.value !== "") {
-      console.log(e.target.value);
       const filterData = originalData.filter((entry) =>
         entry.buyer_name.toLowerCase().includes(e.target.value.toLowerCase())
       );
       if (!filterData.length) {
-        setShowTable(false);
-        setNotfound(true);
+        showTable = false;
+        notFound = true;
         setData([]);
       } else {
         setData(filterData);
-        setShowTable(true);
-        setNotfound(false);
+        showTable = true;
+        notFound = false;
       }
     } else {
-      setShowTable(true);
-      setNotfound(false);
+      showTable = true;
+      notFound = false;
       setData(originalData);
     }
   };
@@ -72,7 +69,9 @@ function TableComponent() {
       dataIndex: "project_sector_name",
       ellipsis: true,
       sorter: (record1, record2) => {
-        return record1.project_sector_name.localeCompare(record2.project_sector_name);
+        return record1.project_sector_name.localeCompare(
+          record2.project_sector_name
+        );
       },
     },
     {

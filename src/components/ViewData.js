@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import DataService from "../service/DataService";
-import { Descriptions } from "antd";
 import moment from "moment";
 import Layout, { Content, Footer, Header } from "antd/lib/layout/layout";
 import "../App.css";
@@ -19,7 +18,6 @@ function ViewData() {
   useEffect(() => {
     DataService.getDatabyId(id)
       .then((response) => {
-        console.log(response.data);
         setName(response.data.buyer_name);
         setSector(response.data.project_sector_name);
         setCountry(response.data.country_name);
@@ -46,14 +44,29 @@ function ViewData() {
           className="site-layout-content"
           style={{ padding: 24, minHeight: 470 }}
         >
-          <Descriptions title="Data" bordered>
-            <Descriptions.Item label="Name">{data.name}</Descriptions.Item>
-            <Descriptions.Item label="Sector">{data.sector}</Descriptions.Item>
-            <Descriptions.Item label="Country">
-              {data.country}
-            </Descriptions.Item>
-            <Descriptions.Item label="Date">{data.date}</Descriptions.Item>
-          </Descriptions>
+          <h1>Data</h1>
+          <div className="dataDisplay">
+            <div className="dataItem">
+              <div className="dataLable">Name :</div>
+              <div classname="data">{data.name}</div>
+              <div style={{ clear: "left" }}></div>
+            </div>
+            <div className="dataItem">
+              <div className="dataLable">Sector :</div>
+              <div classname="data">{data.sector}</div>
+              <div style={{ clear: "both" }}></div>
+            </div>
+            <div className="dataItem">
+              <div className="dataLable">Country :</div>
+              <div classname="data">{data.country}</div>
+              <div style={{ clear: "both" }}></div>
+            </div>
+            <div className="dataItem">
+              <div className="dataLable">Expiry Date :</div>
+              <div classname="data">{data.date}</div>
+              <div style={{ clear: "both" }}></div>
+            </div>
+          </div>
         </div>
       </Content>
       <Footer style={{ textAlign: "center" }}>
